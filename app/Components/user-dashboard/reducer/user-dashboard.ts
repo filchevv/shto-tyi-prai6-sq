@@ -103,6 +103,12 @@ export const startRecording = (accessToken: any) => async (dispatch: any) => {
       payload: res.data
     })
   })
+    .catch(() => {
+      dispatch({
+        type: SUCCESS(ACTION_TYPES.START_RECORDING),
+        payload: {}
+      })
+    })
 };
 
 export const selectVideo = (selectedVideoId: any) => (dispatch: any) => {

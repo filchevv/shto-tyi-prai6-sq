@@ -28,7 +28,7 @@
     "prestart": "yarn build",
     "start": "cross-env NODE_ENV=production electron ./app/main.prod.js",
     "start-main-debug": "yarn start-main-dev --inspect=5858 --remote-debugging-port=9223",
-    "start-main-dev": "cross-env START_HOT=1 NODE_ENV=development electron -r ./internals/scripts/BabelRegister ./app/main.dev.ts",
+    "start-main-dev": "cross-env START_HOT=1 NODE_ENV=development electron -r ./internals/scripts/BabelRegister ./app/main.dev.js",
     "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.renderer.dev.babel.js",
     "test": "cross-env BABEL_DISABLE_CACHE=1 jest",
     "test-all": "yarn lint && yarn tsc && yarn build && yarn test",
@@ -37,7 +37,7 @@
     "test-watch": "yarn test --watch"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{js,jsx}": [
       "cross-env NODE_ENV=development eslint --cache"
     ],
     "{*.json,.{babelrc,eslintrc,prettierrc,stylelintrc}}": [
@@ -139,7 +139,6 @@
     "boilerplate",
     "react",
     "redux",
-    "typescript",
     "ts",
     "sass",
     "webpack",
@@ -156,8 +155,6 @@
     "moduleFileExtensions": [
       "js",
       "jsx",
-      "ts",
-      "tsx",
       "json"
     ],
     "moduleDirectories": [
@@ -191,7 +188,6 @@
     "@babel/plugin-transform-react-inline-elements": "^7.10.4",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
-    "@babel/preset-typescript": "^7.10.4",
     "@babel/register": "^7.10.5",
     "@teamsupercell/typings-for-css-modules-loader": "^2.2.1",
     "@types/enzyme": "^3.10.5",
@@ -208,8 +204,6 @@
     "@types/redux-logger": "^3.0.8",
     "@types/webpack": "^4.41.21",
     "@types/webpack-env": "^1.15.2",
-    "@typescript-eslint/eslint-plugin": "^3.6.1",
-    "@typescript-eslint/parser": "^3.6.1",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
@@ -231,7 +225,6 @@
     "enzyme-to-json": "^3.5.0",
     "eslint": "^7.5.0",
     "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-airbnb-typescript": "^9.0.0",
     "eslint-config-erb": "^1.0.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-webpack": "^0.12.2",
@@ -266,7 +259,6 @@
     "testcafe": "^1.8.8",
     "testcafe-browser-provider-electron": "^0.0.15",
     "testcafe-react-selectors": "^4.0.0",
-    "typescript": "^3.9.7",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.8.0",
@@ -337,10 +329,5 @@
     "baseBranches": [
       "next"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

@@ -1,7 +1,6 @@
 import React from 'react';
-import Login from '../components/login/Login';
+import Login from '../Components/Login';
 
 export default function HomePage() {
-  // @ts-ignore
   return <Login/>;
 }

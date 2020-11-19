@@ -31,10 +31,10 @@ export class Video extends React.Component<IVideo> {
   render = () => {
     const {idToken, videoData, loading} = this.props
 
-    if (idToken == null) {
-      const {from} = location as any || {from: {pathname: routes.HOME}};
-      return <Redirect to={from}/>;
-    }
+    // if (idToken == null) {
+    //   const {from} = location as any || {from: {pathname: routes.HOME}};
+    //   return <Redirect to={from}/>;
+    // }
 
     return ([
       <div className="container">

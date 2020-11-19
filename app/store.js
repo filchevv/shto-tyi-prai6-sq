@@ -1,14 +1,12 @@
-import { configureStore, getDefaultMiddleware, Action } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { createHashHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import { createLogger } from 'redux-logger';
-import { ThunkAction } from 'redux-thunk';
 // eslint-disable-next-line import/no-cycle
-import createRootReducer from './rootReducer';
+import createRootReducer from './reducers';
 
 export const history = createHashHistory();
 const rootReducer = createRootReducer(history);
-export type RootState = ReturnType<typeof rootReducer>;
 
 const router = routerMiddleware(history);
 const middleware = [...getDefaultMiddleware(), router];
@@ -26,7 +24,7 @@ if (shouldIncludeLogger) {
   middleware.push(logger);
 }
 
-export const configuredStore = (initialState?: RootState) => {
+export const configuredStore = initialState => {
   // Create Store
   const store = configureStore({
     reducer: rootReducer,
@@ -36,12 +34,10 @@ export const configuredStore = (initialState?: RootState) => {
 
   if (process.env.NODE_ENV === 'development' && module.hot) {
     module.hot.accept(
-      './rootReducer',
+      './reducers',
       // eslint-disable-next-line global-require
-      () => store.replaceReducer(require('./rootReducer').default)
+      () => store.replaceReducer(require('./reducers').default)
     );
   }
   return store;
 };
-export type Store = ReturnType<typeof configuredStore>;
-export type AppThunk = ThunkAction<void, RootState, unknown, Action<string>>;
