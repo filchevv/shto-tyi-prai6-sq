@@ -1,0 +1,7 @@
+export const enum VideoType {
+  NONE = 'NONE',
+
+  GAME_RECORDING = 'GAME_RECORDING',
+
+  ADVERTISING_RECORDING = 'ADVERTISING_RECORDING',
+}
