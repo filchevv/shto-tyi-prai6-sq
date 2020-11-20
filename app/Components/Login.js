@@ -71,11 +71,3 @@ export default function Login({ location }) {
     </div>
   );
 }
-
-// const mapStateToProps = ({authentication}: RootState) => ({
-//   isAuthenticated: authentication.isAuthenticated,
-//   username: authentication.username,
-//   password: authentication.password,
-//   loginError: authentication.loginError,
-//   idToken: authentication.idToken,
-// });
