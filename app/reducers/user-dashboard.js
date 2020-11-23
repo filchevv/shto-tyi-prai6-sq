@@ -10,7 +10,6 @@ import {
 } from '../actions/user-dashboard.js';
 
 const initialState = {
-  idToken: null,
   selectedVideoId: null,
   videos: [],
   loading: false,
@@ -31,8 +30,7 @@ export default (state = initialState, action) => {
       return {
         ...initialState,
         errorMessage: action.payload,
-        isAuthenticated: false,
-        loginError: true
+        loading: false,
       };
     case TYPE_GET_VIDEOS_SUCCESS:
       return {

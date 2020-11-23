@@ -40,7 +40,7 @@ export default (state = initialState, action) => {
         loading: false,
         sessionHasBeenFetched: true,
         loginSuccess: true,
-        idToken: action.payload
+        idToken: action.payload.access_token
       };
     case TYPE_AUTHENTICATION_LOGOUT:
       return {

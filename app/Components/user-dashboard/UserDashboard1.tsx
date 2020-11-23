@@ -19,7 +19,7 @@ export interface IUserDashboard {
   selectedVideoId: null
 }
 
-export class UserDashboard extends React.Component<IUserDashboard> {
+export class UserDashboard1 extends React.Component<IUserDashboard> {
 
   constructor(props: any) {
     super(props);
@@ -52,20 +52,20 @@ export class UserDashboard extends React.Component<IUserDashboard> {
     }
 
     if (idToken == null) {
-      const {from} = location as any || {from: {pathname: routes.HOME}};
+      const {from} = location as any || {from: {pathname: routes.LOGIN}};
       return <Redirect to={from}/>;
     }
 
     return ([
       isRecording ? <button key={"spvr"} onClick={this.stopVideoRecording}>Stop Recording</button> :
-        <button key={"stvr"} onClick={this.startVideoRecording}>Start Recording</button>,
+        <button key={"stvr"} onClick={startVideoRecording}>Start Recording</button>,
       videos && videos.length > 0 ? (
         <div className="container">
           <div style={{minHeight: "800px"}}>
             {videos.map((video: IVideo) => (
               <>
                 <Button
-                  onClick={this.selectVideo(video.id)} color="info" size="sm">
+                  onClick={selectVideo(video.id)} color="info" size="sm">
                   {video.videoPath}
                   Todo: introduce video name
                 </Button>
@@ -100,4 +100,4 @@ const mapDispatchToProps = {
 type StateProps = ReturnType<typeof mapStateToProps>;
 type  DispatchProps = typeof mapDispatchToProps;
 
-export default connect<RootState, DispatchProps, {}>(mapStateToProps, mapDispatchToProps)(UserDashboard);
+export default connect<RootState, DispatchProps, {}>(mapStateToProps, mapDispatchToProps)(UserDashboard1);

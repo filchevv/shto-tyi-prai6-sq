@@ -12,7 +12,7 @@ export default function Routes() {
     <App>
       <Switch>
         <Route key={routes.USER_DASHBOARD}  path={routes.USER_DASHBOARD} component={UserDashboard} />
-        <Route key={routes.HOME} path={routes.HOME} component={Home}/>
+        <Route key={routes.LOGIN} path={routes.LOGIN} component={Home}/>
         {/*<Route key={routes.VIDEO_PREVIEW} path={routes.VIDEO_PREVIEW} component={VideoPreview} />*/}
       </Switch>
     </App>

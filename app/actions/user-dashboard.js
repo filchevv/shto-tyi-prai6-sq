@@ -1,5 +1,4 @@
 import axios from "axios";
-import {ACTION_TYPES} from "../Components/user-dashboard/reducer/user-dashboard";
 
 export const TYPE_DASHBOARD_LOADING = 'dashboard.loading';
 export const TYPE_GET_VIDEOS_ERROR = 'dashboard.get.videos.error';
@@ -42,11 +41,11 @@ export const startRecording = (accessToken) => async (dispatch) => {
     });
 
     dispatch({
-      type: TYPE_STOP_VIDEO_RECORDING_SUCCESS,
+      type: TYPE_START_VIDEO_RECORDING_SUCCESS
     });
   } catch (e) {
     dispatch({
-      type: TYPE_STOP_VIDEO_RECORDING_ERROR,
+      type: TYPE_START_VIDEO_RECORDING_ERROR,
       payload: e.message || e,
     })
   }
@@ -60,11 +59,11 @@ export const stopRecording = (accessToken) => async (dispatch) => {
     });
 
     dispatch({
-      type: TYPE_START_VIDEO_RECORDING_SUCCESS,
+      type: TYPE_STOP_VIDEO_RECORDING_SUCCESS
     });
   } catch (e) {
     dispatch({
-      type: TYPE_START_VIDEO_RECORDING_ERROR,
+      type: TYPE_STOP_VIDEO_RECORDING_ERROR,
       payload: e.message || e,
     })
   }

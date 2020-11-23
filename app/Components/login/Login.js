@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styles from './Login.css';
-import { loginAction } from '../actions/authentication';
-import { Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { Button, Alert, Col } from 'reactstrap';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
-import routes from '../config/constants/routes.json';
+import {loginAction} from '../../actions/authentication';
+import {Redirect} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {Button, Alert, Col} from 'reactstrap';
+import {AvForm, AvField} from 'availity-reactstrap-validation';
+import routes from '../../config/constants/routes.json';
 
-export default function Login({ location }) {
-  const { isAuthenticated, loginError } = useSelector(state => ({
+export default function Login({location}) {
+  const {isAuthenticated, loginError} = useSelector(state => ({
     isAuthenticated: state.authentication.isAuthenticated,
     loginError: state.authentication.loginError,
   }));
@@ -18,7 +18,7 @@ export default function Login({ location }) {
     password: 'password',
   })
 
-  function handleChange({ target: { name, value } }) {
+  function handleChange({target: {name, value}}) {
     setFields({
       ...fields,
       [name]: value,
@@ -29,8 +29,8 @@ export default function Login({ location }) {
     dispatch(loginAction(fields.username, fields.password));
   }
 
-  const { from } = location || {from: {pathname: routes.USER_DASHBOARD}};
   if (isAuthenticated) {
+    const {from} = location || {from: {pathname: routes.USER_DASHBOARD}};
     return <Redirect to={from}/>;
   }
 
@@ -48,7 +48,7 @@ export default function Login({ location }) {
           <AvField
             name="username"
             label="Username"
-            value = {fields.username || ''}
+            value={fields.username || ''}
             placeholder="Your username"
             required
             errorMessage="Username cannot be empty!"
